@@ -1,0 +1,78 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Dog Breed Predictor App{% endblock %}
+{% block navbar %}
+<style>
+img {
+  border-radius: 5%;
+}
+</style>
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">   
+            <img class="navbar-brand" src="{{url_for('static', filename='udacity_logo.png')}}" >        
+            <a class="navbar-brand" href="/">Dog Breed Predictor App</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Dogs Home </a></li>
+                    
+                     <li style="margin-left: auto ;"><a href="https://github.com/Ernestoffor/">Github</a></li>
+                     <li style="text-align: left; margin-left: auto;"><a href="https://twitter.com/ErnestOffor">Twitter</a></li>
+                    
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="align-items: center;">
+    <div class="page-header">
+        <h1 style=" text-align: center ; background-color:chartreuse ">Welcome to an Interactive Dog Breed Predictor App</h1>
+        <h2 style="background-color: bisque;  text-align: center ;">Upload an image of a Dog or Human Being</h2>
+        <p style=" text-align: justify ; font-style: italic; background-color: black; color: aliceblue; ">If an image of a dog is uploaded, the displays the image 
+            and the breed of the dog present in the image. On the other hand,
+        if a human image is uploaded, the app renders the image and displays 
+    the corresponding dog breed of the human being. 
+Finally, if the uploaded image is neither a dog nor human image is selected, the app
+would display the image and ask you to upload an image of dog or human. 
+</p>
+    	
+    	<img style="border: 4px solid rgb(240, 240, 240); display: block; margin-left: auto; margin-right: auto;" src={{image_path}}>
+    	
+                        
+            <div style="text-align: center">
+                <br>
+                <br>
+                <div style=" background-color:bisque; font-weight:bold ">
+                    {{prediction[1]}} 
+                </div>
+            </div>
+            <div style="text-align: center" >
+                <ul>
+                    <li style="margin-left: auto; color:black;font-weight: bold ;display:inline">{{prediction[2] | title}} </li>
+                    <li style="margin-left: auto; color: rgb(0, 255, 42); display:inline; font-weight: bold;">{{prediction[0] | title}}</li>
+                </ul>
+                
+            </div>
+
+            
+            <div style="text-align: center">
+                <a href= {{prediction[3]}}>Learn More about this Dog Breed Here</a>
+            </div>
+    		
+    	
+        <form method="POST" action="" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}          
+          <div class="form-group">
+             {{ form.file.label() }}
+             {{ form.file(class="form-control-file") }}             
+          </div>
+          <div class="form-group mt-4" style="width: 15%;">
+             {{ form.submit(class="btn btn-primary btn-user btn-block bg-purple") }}
+          </div>
+       </form>
+    </div>
+</div>
+{% endblock %}
+
