@@ -7,16 +7,20 @@
 
 ## Project Description
 
-This is a Convolutional Neural Networks (CNN) project. In this project,  a pipeline  is built that is used within a web app to process real-world, user-supplied images.  Given an image of a dog, the  algorithm  developed will identify an estimate of the dogs’s breed.  If supplied an image of a human, the algorithm will identify the resembling dog breed. Finally, if the uploaded image is neither a dog nor human image is selected, the app
-would display the image and ask you to upload an image of a dog or human.
-
+This is a Convolutional Neural Networks (CNN) project. In this project,  a pipeline  is built that is used within a web app to process real-world, user-supplied images.  Given an image of a dog, the  algorithm  developed will identify an estimate of the dogs’s breed.  If supplied an image of a human, the algorithm will identify the resembling dog breed. Finally, if the uploaded image is neither a dog nor human image is selected, the app would display the image and ask you to upload an image of a dog or human. 
+The outputs of the web app are the following:
+1. the image supplied to it.
+2. A message that tells if the image uploaded is a dog, human or neither dog nor human.
+3. The breed of the dog or the corresponding breed of the most likely dog in case of human image.
+4. the wikipedia link of the dog breed where users could learn more about the dog breed. This is an impressive feature of the web app. 
+If the image is neither dog nor human, the link redirects the user to the home page to upload another image.
 
 A sample of the web app built in the project is shown below.
 
 !['image'](/app/static/dog_app.png)
 
 
-Along with exploring state-of-the-art CNN models for classification, this project will make important design decisions about the user experience for the  app.  The goal is that project involves breaking down a series of models designed to perform various tasks in a data processing pipeline.  Each model has its strengths and weaknesses, and engineering a real-world application often involves solving many problems without a perfect answer.  The imperfect solution will nonetheless create a fun user experience!
+Along with exploring state-of-the-art CNN models for classification, this project will make important design decisions about the user experience for the  app.  The goal is that project involves breaking down a series of models designed to perform various tasks in a data processing pipeline.  Each model has its strengths and weaknesses, and engineering a real-world application often involves solving many problems without a perfect answer.  The imperfect solution will nonetheless create a fun user experience! The model at its initial deployment has an accuracy of around 73 percent. This is not perfect but does pretty jobs of successful predictions of the breeds of different dogs. 
 
 ## Project Steps and Results:
 
@@ -38,6 +42,23 @@ A dataset comprising of **8351** total dog images with **6680** images used as t
 
 8. Finally, a web app was developed for users' interactions with the model. This was done using a python flask framework. In the app, users can upload any image and get results as described in the algorithm of step 7. 
 
+## Performance of the Model in the Web App
+Results speak for themselves. The model does great predictions. All the test images fed into were able to receive correct classification of whether they are dogs, humans or neither. The algorithm does well too in predicting that cats are not dogs. The only noticeable difficulty so far is on the most likely dog breeds of human images. When fed with different images of the same human being, the model returns different corresponding dog breeds. It could be understandable that it could not make such recognition, because of different colors of clothing present in the human images. 
+
+The outputs of the model for different inputs are as shown in the diagrams below.
+
+!['Test1'](app/static/dog_pred3.png)
+
+!['Test1'](app/static/dog_pred5.png)
+!['Test1'](app/static/dog_pred6.png)
+!['Test1'](app/static/dog_pred1.png)
+
+!['Test1'](app/static/dog_pred2.png)
+
+!['Test1'](app/static/dog_pred7.png)
+
+!['Test1'](app/static/dog_pred8.png)
+
 
 ##  Instructions on run the web app.
 
@@ -57,14 +78,12 @@ A dataset comprising of **8351** total dog images with **6680** images used as t
 4. Interact with the web app there.
 
 
-
-
 ### Project Instructions of File Usage
 In order to reproduce the project. Do the following. 
 1. Clone the repository
 ```	
 git clone https://github.com/Ernestoffor/dog_breed_predictor.git
-cd dog-project
+cd dog_breed_predictor
 ```
 
 2. Download the [dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).  Unzip the folder and place it in the repo, at location `path/to/dog_breed_predictor/dogImages`. 
@@ -144,5 +163,8 @@ jupyter notebook dog_app.ipynb
 
 12. (Optional) **If you are running the project on your local machine (and not using AWS)**, before running code, change the kernel to match the dog_breed_predictor environment by using the drop-down menu (**Kernel > Change kernel > dog_breed_predictor**). 
 
+### Acknowledgement
+This project is done as a part of Udacity's Data Science Nanodegree program. Many thanks to the Udacity instructors and mentors for their guidance and supports.
 
-
+### References
+- [Bird Prediction in Streamlit](https://github.com/Joshmantova/Eagle-Vision)
