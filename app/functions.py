@@ -15,8 +15,7 @@ import tensorflow as tf
 from keras.preprocessing.image import img_to_array
 from keras.applications import imagenet_utils
 from extract_bottleneck_features import *
-import matplotlib.pyplot as plt    
-import pandas as pd    
+import matplotlib.pyplot as plt       
 import flask  
 from PIL import Image 
 
